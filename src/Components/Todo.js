@@ -1,13 +1,14 @@
 import React from 'react'
+import '../index.css'
 
 function Todo({todo}) {
 
 
     return (
         <>
-            <div>
-                <h2>{todo.id}</h2>
-                <p>{todo.title}</p>
+            <div className='todo-box'>
+                <h2 className='todo-heading'>{todo.id}</h2>
+                <p className='todo-subtitle'>{todo.title}</p>
             </div>
         </>
     )

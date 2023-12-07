@@ -15,9 +15,9 @@ function TodoForm() {
 
     return (
         <div>
-            <form onSubmit={handleTextSubmit}>
-                <input type='text' value={text} onChange={handleTextChange} ></input>
-                <button>Add Todo</button>
+            <form onSubmit={handleTextSubmit} className='todo-form'>
+                <input className='todo-input-box' type='text' value={text} onChange={handleTextChange} placeholder='Enter your todo...'></input>
+                <button className='todo-add-button'>Add Todo</button>
             </form>
         </div>
     )

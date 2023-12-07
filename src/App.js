@@ -28,7 +28,7 @@ function App() {
   ];
 
   return (
-    <div className="App">
+    <div className="todo-container">
       <TodoForm />
       <TodoBox todos={todos} />
     </div>
