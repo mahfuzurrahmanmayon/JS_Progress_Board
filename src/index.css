@@ -7,33 +7,44 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .todo-form {
-    display: flex;
-    margin-bottom: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.todo-input-box {
-    flex: 1;
+.todo-input-box,
+.todo-desc-box {
+    width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.todo-input-box:focus,
+.todo-desc-box:focus {
+    outline: none;
+    border-color: #3498db;
 }
 
 .todo-add-button {
-    padding: 10px 15px;
-    font-size: 16px;
-    background-color: #4caf50;
+    background-color: #2ecc71;
     color: #fff;
-    border: 1px solid #4caf50;
+    border: none;
+    padding: 10px 15px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
 }
 
 .todo-add-button:hover {
-    background-color: #45a049;
+    background-color: #27ae60;
 }
+
 .todo-box {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -53,3 +64,7 @@
     font-size: 16px;
     color: #666;
 }
+.todo-textarea {
+    color: #333; /* You can customize the color */
+  }
+  

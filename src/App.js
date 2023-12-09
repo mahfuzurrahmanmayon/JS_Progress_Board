@@ -1,36 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import TodoForm from "./Components/TodoForm";
 import TodoBox from "./Components/TodoBox";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
-  const todos = [
-    {
-      id: 1,
-      title: 'Complete homework',
-      completed: false
-    },
-    {
-      id: 2,
-      title: 'Read a book',
-      completed: true
-    },
-    {
-      id: 3,
-      title: 'Go for a run',
-      completed: false
-    },
-    {
-      id: 4,
-      title: 'Buy groceries',
-      completed: false
-    }
-  ];
+  const [todos,setTodos] = useState([])
+
+  const handleAddTodo = (setInputText, setTextArea) => {
+    setTodos((prevText) => {
+      return [...prevText, {id: uuidv4(), setInputText, setTextArea}]
+    })
+  }
+
+
 
   return (
     <div className="todo-container">
-      <TodoForm />
-      <TodoBox todos={todos} />
+      <TodoForm onAddTodo={handleAddTodo} />
+      <TodoBox todos={todos}  />
     </div>
   );
 }
