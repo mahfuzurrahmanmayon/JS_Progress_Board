@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Form from './Form';
 import { FaBackspace } from "react-icons/fa";
+import MarkdownPreview from './MarkDownPreview';
+
 
 
 
@@ -13,11 +15,12 @@ const Board = () => {
   ]);
 
   const [selectedTask, setSelectedTask] = useState(false);
+  const [postContent, setPostContent] = useState('');
 
 
   const handleTextSubmit = (inputText, addrtype) => {
     if (inputText === '') {
-      return; // When inputText is empty Do nothing.
+      return; 
     }
 
     const newCard = { id: cards.length + 1, text: inputText, status: addrtype };
@@ -26,11 +29,22 @@ const Board = () => {
   };
   
   const handleTaskClick = () => {
-    setSelectedTask(!selectedTask);
+    setSelectedTask(true);
   };
+
+  const handleCloseClick = (e) => {
+    e.stopPropagation()
+    setSelectedTask(false)
+  }
+  
+
 
   const handleDeleteCard = (itemId) => {
     setCards((prevItems) => prevItems.filter(item => item.id !== itemId))
+  }
+
+  const handleAddDesc = () => {
+
   }
 
   return (
@@ -47,16 +61,18 @@ const Board = () => {
                       <div>
                         {
                           selectedTask?
-                          <div  className="main">
+                          <div className="main">
                               <div className="popup">
                                   <div className="popup-header">
                                       <h1>{card.text}</h1>
-                                      <h1 onClick={handleTaskClick}>X</h1>
+                                      <h1 onClick={handleCloseClick}>X</h1>
                                   </div>
-                                  <div>
-                                    <p>This is description of {card.text}</p>
-                                  </div>
+                                  <form onSubmit={handleAddDesc} className='label-container'>
+                                      <textarea className='label-textarea'  value={postContent} onChange={e => setPostContent(e.target.value)} />
+                                      <MarkdownPreview markdown={postContent} />
+                                  </form>
                               </div>
+                              
                           </div> : ""
                         }
                       </div>
