@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Board from './Components/Board';
 import './index.css'
@@ -6,8 +5,7 @@ import './index.css'
 function App() {
 
   return (
-    <div className="App">
-      
+    <div className="Todo">
       <Board />
     </div>
   );

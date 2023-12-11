@@ -16,10 +16,6 @@ function Form(props) {
         e.preventDefault()
         props.onTextSubmit(inputText, addrtype)
         setInputText("")
-        setAddrType("")
-        if(!inputText) {
-
-        }
     }
 
     return (
@@ -31,7 +27,7 @@ function Form(props) {
                     <option value='in-progress'>In Progress</option>
                     <option value='done'>Done</option>
                 </select>
-                <button className='todo-add-button'>Add Todo</button>
+                <button className='todo-add-button'> + Add Todo</button>
             </form>
         </div>
     )
