@@ -31,6 +31,9 @@ body{
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .card-text {
     margin: 0;
@@ -101,4 +104,12 @@ body{
     border-bottom: 2px solid black;
 }
 
-
+.todo-icon {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

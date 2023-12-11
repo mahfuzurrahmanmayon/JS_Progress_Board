@@ -1,6 +1,7 @@
 // src/Board.js
 import React, { useState } from 'react';
 import Form from './Form';
+import { FaBackspace } from "react-icons/fa";
 
 
 
@@ -28,7 +29,9 @@ const Board = () => {
     setSelectedTask(!selectedTask);
   };
 
-
+  const handleDeleteCard = (itemId) => {
+    setCards((prevItems) => prevItems.filter(item => item.id !== itemId))
+  }
 
   return (
     <>
@@ -57,7 +60,10 @@ const Board = () => {
                           </div> : ""
                         }
                       </div>
-                    </h4>  
+                    </h4>
+                    <button className='todo-icon' onClick={() => handleDeleteCard(card.id)}>
+                      <FaBackspace />
+                    </button>  
                 </div>
             ))}
           
