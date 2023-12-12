@@ -16,7 +16,15 @@ const Board = () => {
 
   const [selectedTask, setSelectedTask] = useState(false);
   const [postContent, setPostContent] = useState('');
+  const [isTextareaFocused, setIsTextareaFocused] = useState(false);
 
+  const handleTextareaFocus = () => {
+    setIsTextareaFocused(true);
+  };
+
+  const handleTextareaBlur = () => {
+    setIsTextareaFocused(false);
+  };
 
   const handleTextSubmit = (inputText, addrtype) => {
     if (inputText === '') {
@@ -37,8 +45,6 @@ const Board = () => {
     setSelectedTask(false)
   }
   
-
-
   const handleDeleteCard = (itemId) => {
     setCards((prevItems) => prevItems.filter(item => item.id !== itemId))
   }
@@ -68,8 +74,15 @@ const Board = () => {
                                       <h1 onClick={handleCloseClick}>X</h1>
                                   </div>
                                   <form onSubmit={handleAddDesc} className='label-container'>
-                                      <textarea className='label-textarea'  value={postContent} onChange={e => setPostContent(e.target.value)} />
-                                      <MarkdownPreview markdown={postContent} />
+                                      <textarea className='label-textarea'  
+                                      value={postContent} 
+                                      onChange={e => setPostContent(e.target.value)}
+                                      onBlur={handleTextareaBlur}
+                                      onFocus={handleTextareaFocus}
+                                      >
+                                        <MarkdownPreview markdown={postContent} />
+                                      </textarea>
+                                      
                                   </form>
                               </div>
                               
