@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 
 function Form(props) {
+    // Initial useState Hooks for inputText and addrType
     const [inputText, setInputText] = useState("")
     const [addrtype, setAddrType] = useState('todo')
 
+    // handleTextChange func
     const handleTextChange = (e) => {
         setInputText(e.target.value)
     }
 
+    // handleAddrTypeChange func
     const handleAddrTypeChange = (e) => {
         setAddrType(e.target.value);
     }
 
+    // handleTextSubmit func and data pass from From Func to Board with Props Drilling
     const handleTextSubmit = (e) => {
         e.preventDefault()
         props.onTextSubmit(inputText, addrtype)

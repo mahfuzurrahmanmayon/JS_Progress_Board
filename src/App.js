@@ -6,6 +6,7 @@ function App() {
 
   return (
     <div className="Todo">
+      {/* Run Board Func */}
       <Board />
     </div>
   );

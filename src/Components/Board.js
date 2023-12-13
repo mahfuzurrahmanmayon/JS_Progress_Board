@@ -1,4 +1,4 @@
-// src/Board.js
+// import all the necessary things
 import React, { useEffect, useState } from 'react';
 import Form from './Form';
 import { FaBackspace  } from "react-icons/fa";
@@ -7,30 +7,32 @@ import MarkdownPreview from './MarkDownPreview';
 
 
 
-
 const Board = () => {
+  // Card Data and save LocalStorage
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem('cards')) || [
     { id: 1, text: 'Task 1', status: 'todo' },
     { id: 2, text: 'Task 2', status: 'in-progress' },
     { id: 3, text: 'Task 3', status: 'done' },
   ]);
 
+  // initial useState hooks
   const [selectedTask, setSelectedTask] = useState(false);
   const [postContent, setPostContent] = useState('');
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
 
 
-
+  // handleTextAreaFocus 
   const handleTextareaFocus = () => {
     setIsTextareaFocused(true);
   };
 
+  // handleTextAreaBlur
   const handleTextareaBlur = () => {
     setIsTextareaFocused(false);
   };
 
 
-
+  // handleTextSubmit function
   const handleTextSubmit = (inputText, addrtype) => {
     if (inputText === '') {
       return; 
@@ -41,39 +43,45 @@ const Board = () => {
 
   };
   
+  // handleTaskClick function
   const handleTaskClick = () => {
     setSelectedTask(true);
   };
 
+  // handleTaskCloseClick function
   const handleCloseClick = (e) => {
     e.stopPropagation()
     setSelectedTask(false)
   }
   
+  // handleDeleteCard from Array and LocalStorage
   const handleDeleteCard = (itemId) => {
     setCards((prevItems) => prevItems.filter(item => item.id !== itemId))
   }
 
 
-  
+  // add localstorage cards data in under the Application Localstorage tab
   useEffect(() => {
     localStorage.setItem('cards', JSON.stringify(cards));
   }, [cards]);
 
+  // add localstorage posts get data
   useEffect(() => {
     const savedPostContent = localStorage.getItem('posts');
-    if (savedPostContent) {
-      setPostContent(JSON.parse(savedPostContent));
-    }
+    setPostContent(JSON.parse(savedPostContent));
   }, []);
 
+  // add localstorage posts data in under the Application Localstorage tab
   useEffect(() => {
     localStorage.setItem('posts', JSON.stringify(postContent));
   }, [postContent]);
 
   return (
     <>
+      {/* Form Component */}
       <Form onTextSubmit={handleTextSubmit} />
+
+      {/* Card Component */}
       <div className="card-board">
         <div className="card-column">
             <h3 className='column-heading'>Todo</h3>
